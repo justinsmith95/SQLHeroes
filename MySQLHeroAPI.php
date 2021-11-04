@@ -100,6 +100,28 @@ function deleteHero()
         echo "Error deleting record: " . $conn->error;
     }
 }
+// function readHeroesEnemies()
+// {
+//     $sql = "SELECT
+//     heroes.name,
+//     GROUP_CONCAT(heroes.name SEPARATOR ', ') as enemies
+//     FROM heroes
+//     INNER JOIN enemies ON relationships.hero1_id=heroes.id, relationships.hero2_id=heroes.id WHERE relationships.type_id='2'
+//     INNER JOIN relationship_types ON relationship_types.id=relationships.type_id
+//     GROUP BY heroes.id";
+//     global $conn;
+//     $result = $conn->query($sql);
+
+//     if ($result->num_rows > 0) {
+//         // output data of each row
+//         while ($row = $result->fetch_assoc()) {
+//            print_r($row);
+//         }
+//     } else {
+//         echo "0 results";
+//     }
+//     //catch exception
+// }
 
 function getAllHeroes()
 {
@@ -134,7 +156,7 @@ function getAllHeroes()
             case "create":
                 createHero();
                 break;
-            case "read":
+            case "readAllHeroes":
                 getAllHeroes();
                 break;
             case "update":
@@ -143,6 +165,9 @@ function getAllHeroes()
             case "delete":
                 deleteHero();
                 break;
+            // case "readHeroesEnemies":
+            //     readHeroesEnemies();
+            //     break;
             default:
                 echo 'ERROR 404, page not found.';
                 break;
