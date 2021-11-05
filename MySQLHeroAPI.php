@@ -45,6 +45,28 @@ function createHero()
     }
 }
 
+function giveHeroAbility()
+{
+
+    if (!isset($_REQUEST["hero_id"])) {
+        echo "ERROR 422: undefined variable, expected 'hero_id'";
+        return;
+    }
+    if (!isset($_REQUEST["ability_id"])) {
+        echo "ERROR 422: undefined variable, expected 'ability_id'";
+        return;
+    }
+    $hero_id = $_REQUEST["hero_id"];
+    $ability_id = $_REQUEST["ability_id"];
+    $sql =  "INSERT INTO abilities (hero_id, ability_id) VALUES ('$hero_id', '$ability_id')";
+    global $conn;
+    if ($conn->query($sql) === true) {
+        echo 'success';
+    } else {
+        echo $conn->error;
+    }
+}
+
 
 function updateHero()
 {
@@ -149,6 +171,7 @@ function getAllHeroes()
     }
     //catch exception
 }
+  
     //switch case
     if (isset($_GET['route'])) {
 
@@ -164,6 +187,9 @@ function getAllHeroes()
                 break;
             case "delete":
                 deleteHero();
+                break;
+            case "giveHeroAbility":
+                giveHeroAbility();
                 break;
             // case "readHeroesEnemies":
             //     readHeroesEnemies();
