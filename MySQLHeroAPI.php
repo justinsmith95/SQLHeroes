@@ -70,10 +70,7 @@ function giveHeroAbility()
 
 function updateHero()
 {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "Hero_Database";
+   
     // change to if name,about,bio exists, add to string variable, set sql = string
     if (!isset($_REQUEST["name"])) {
         echo "ERROR 422: undefined variable, expected 'name'";
@@ -103,11 +100,6 @@ function updateHero()
 
 function deleteHero()
 {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "Hero_Database";
-
     if (!isset($_REQUEST["id"])) {
         echo "ERROR 422: undefined variable, expected 'id'";
         return;
